@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Private Variables
-    private float speed = 20.0f;
-    private float turnSpeed = 80.0f;
+    [SerializeField]private float speed = 20.0f;
+    [SerializeField]private float turnSpeed = 80.0f;
     private float horizontalInput;
     private float forwardInput;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

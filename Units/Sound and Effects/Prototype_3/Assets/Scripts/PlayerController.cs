@@ -24,5 +24,10 @@ public bool isOnGround = true;
         }
        // transform.Translate(Vector3.forward * Time.deltaTime * 8);
     }
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        {
+            isOnGround = true;
+        }
+    }
 }

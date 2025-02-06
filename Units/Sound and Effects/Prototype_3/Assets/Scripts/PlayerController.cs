@@ -5,6 +5,9 @@ public class PlayerController : MonoBehaviour
 // First create the var in the class
 private Animator playerAnim;
 private Rigidbody playerRb;
+// Don't forget that with particles you still have to add them to the Player object in the Unity Editor
+public ParticleSystem explosionParticle;
+public ParticleSystem dirtParticle;
 public float jumpForce = 10;
 public float gravityModifier;
 public bool isOnGround = true;
@@ -28,6 +31,7 @@ public bool gameOver;
             playerRb.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
+            dirtParticle.Stop();
         }
        // transform.Translate(Vector3.forward * Time.deltaTime * 8);
     }
@@ -38,6 +42,7 @@ public bool gameOver;
             if (collision.gameObject.CompareTag("Ground"))
             {
                 isOnGround = true;
+                dirtParticle.Play();
                 
             } else if (collision.gameObject.CompareTag("Obstacle"))
             {
@@ -47,6 +52,8 @@ public bool gameOver;
                 playerAnim.SetBool("Death_b", true);
                 // Notice how the Set is set to the variable type . Also, don't forget to put the name in quotes
                 playerAnim.SetInteger("DeathType_int", 1);
+                explosionParticle.Play();
+                dirtParticle.Stop();
             }
         }
     }

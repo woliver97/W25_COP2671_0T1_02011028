@@ -8,6 +8,9 @@ private Rigidbody playerRb;
 // Don't forget that with particles you still have to add them to the Player object in the Unity Editor
 public ParticleSystem explosionParticle;
 public ParticleSystem dirtParticle;
+public AudioSource playerAudio;
+public AudioClip jumpSound;
+public AudioClip crashSound;
 public float jumpForce = 10;
 public float gravityModifier;
 public bool isOnGround = true;
@@ -18,6 +21,8 @@ public bool gameOver;
         Physics.gravity *= gravityModifier;
         // Then use the GetComponent method to get the component you're trying to access
         playerAnim = GetComponent<Animator>();
+        // DO NOT FORGET TO GET COMPONENT FROM ANY COMPONENT YOU WANT TO ACCESS !!! 
+        playerAudio = GetComponent<AudioSource>();
     }
 
 
@@ -32,6 +37,9 @@ public bool gameOver;
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
+            // the PlayOneShot method is used to play a sound once and not loop it , the 1.0f is the volume 
+            playerAudio.PlayOneShot(jumpSound, 5.0f);
+            
         }
        // transform.Translate(Vector3.forward * Time.deltaTime * 8);
     }
@@ -54,6 +62,7 @@ public bool gameOver;
                 playerAnim.SetInteger("DeathType_int", 1);
                 explosionParticle.Play();
                 dirtParticle.Stop();
+                playerAudio.PlayOneShot(crashSound, 5.0f);
             }
         }
     }

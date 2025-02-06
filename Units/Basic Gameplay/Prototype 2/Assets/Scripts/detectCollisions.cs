@@ -13,9 +13,14 @@ public class detectCollisions : MonoBehaviour
     {
         
     }
-void OnTriggerEnter(Collider other)
-{
-    Destroy(gameObject);
-    Destroy(other.gameObject);
-}
+    public int scoreCounter = 0;
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        Destroy(other.gameObject);
+        scoreCounter++;
+        Debug.Log("Score: " + scoreCounter);
+    }
+
+
 }

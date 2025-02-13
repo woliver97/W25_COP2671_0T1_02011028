@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
   - component: {fileID: 534669907}
+  - component: {fileID: 534669908}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -328,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.74, y: 6.89, z: -16.35}
+  m_LocalPosition: {x: 10.35, y: 6.89, z: -16.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -475,6 +476,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &534669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1519f4bd8aa78644b9e07d95368db5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicX: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: def27663493367f40bddcef543a177b1, type: 3}
 --- !u!1001 &827060668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,6 +542,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5322872193712033526, guid: f147a01ef442b2345a3546109476c690, type: 3}
+      propertyPath: youDead
+      value: 
+      objectReference: {fileID: 8300000, guid: def27663493367f40bddcef543a177b1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -666,6 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b408b524700a8974e933fb2d6aca47f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rocketPrefab: {fileID: 7062020340056917232, guid: 2620c9e811c81c84a9ed028dc7d29dc3, type: 3}
   obstaclePrefab: {fileID: 3100650484213203210, guid: 469a9f3948edf0e4588289557f08c0c9, type: 3}
 --- !u!4 &829551705
 Transform:

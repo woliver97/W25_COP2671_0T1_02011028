@@ -10,11 +10,15 @@ public ParticleSystem explosionParticle;
 public ParticleSystem dirtParticle;
 public AudioSource playerAudio;
 public AudioClip jumpSound;
+public AudioClip youDead;
 public AudioClip crashSound;
 public float jumpForce = 10;
 public float gravityModifier;
 public bool isOnGround = true;
-public bool gameOver;   
+public bool gameOver;
+public double scoreCounter;
+
+
         void Start()
     {
        playerRb = GetComponent<Rigidbody>();
@@ -23,8 +27,16 @@ public bool gameOver;
         playerAnim = GetComponent<Animator>();
         // DO NOT FORGET TO GET COMPONENT FROM ANY COMPONENT YOU WANT TO ACCESS !!! 
         playerAudio = GetComponent<AudioSource>();
+        InvokeRepeating("scoreCounterX", 0, 1);
     }
-
+    public void scoreCounterX()
+    {
+        if (gameOver != true)
+        {
+            scoreCounter += 1000d;
+            Debug.Log("Score: " + scoreCounter);
+        }
+    }
 
     void Update()
     {
@@ -39,20 +51,22 @@ public bool gameOver;
             dirtParticle.Stop();
             // the PlayOneShot method is used to play a sound once and not loop it , the 1.0f is the volume 
             playerAudio.PlayOneShot(jumpSound, 5.0f);
-            
+        
         }
+
+        
        // transform.Translate(Vector3.forward * Time.deltaTime * 8);
     }
     private void OnCollisionEnter(Collision collision)
     {
         {
-            
+
             if (collision.gameObject.CompareTag("Ground"))
             {
                 isOnGround = true;
                 dirtParticle.Play();
                 
-            } else if (collision.gameObject.CompareTag("Obstacle"))
+            } else if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("rocket"))
             {
                 Debug.Log("Game Over!");
                 gameOver = true;
@@ -61,9 +75,11 @@ public bool gameOver;
                 // Notice how the Set is set to the variable type . Also, don't forget to put the name in quotes
                 playerAnim.SetInteger("DeathType_int", 1);
                 explosionParticle.Play();
-                dirtParticle.Stop();
+                dirtParticle.Stop(); 
                 playerAudio.PlayOneShot(crashSound, 5.0f);
+                playerAudio.PlayOneShot(youDead, 1.0f);
+
             }
         }
     }
-}
+}   

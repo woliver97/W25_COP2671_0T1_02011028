@@ -27,14 +27,23 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if(gameManager.isGameActive)
+        {
         Destroy(gameObject);
         gameManager.UpdateScore(pointValue);
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);    
+        }
+        
+
     }
     // Sensor gameObject has a collider that covers the whole game area
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        if(!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+        }
     }
     Vector3 RandomForce()
     {

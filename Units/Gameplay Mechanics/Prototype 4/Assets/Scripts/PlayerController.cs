@@ -29,8 +29,9 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             hasPowerup = true;
             // StartCouroutine is a built-in Unity method that allows us to start a coroutine, which is a function that can run independently of the Update method
-            StartCoroutine(PowerupCountdownRoutine());
             powerupIndicator.gameObject.SetActive(true);
+            StartCoroutine(PowerupCountdownRoutine());
+            
         }                                       }
     IEnumerator PowerupCountdownRoutine() {
         // Yield is used for enabling us to run this timer in a place outside of the Update method

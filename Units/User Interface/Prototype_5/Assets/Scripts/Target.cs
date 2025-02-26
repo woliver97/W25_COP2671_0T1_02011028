@@ -12,6 +12,7 @@ public class Target : MonoBehaviour
     private GameManager gameManager;
     public int pointValue;
     public ParticleSystem explosionParticle;
+    public AudioClip hitSound;
 
     void Start()
     {
@@ -27,9 +28,11 @@ public class Target : MonoBehaviour
     {
         if (gameManager.isGameActive)
         {
+            AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position);
             Destroy(gameObject);
             gameManager.UpdateScore(pointValue);
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+
         }
     }
 

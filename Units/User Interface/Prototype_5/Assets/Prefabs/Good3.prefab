@@ -149,10 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57dee0ce1fe46a4d92f5129c6510678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 12
-  maxSpeed: 16
-  maxTorque: 0.5
-  xRange: 4
-  ySpawnPos: -2
   pointValue: 15
   explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
+  hitSound: {fileID: 8300000, guid: bde9c4c1931e6e242aaf3c11e7eeca78, type: 3}

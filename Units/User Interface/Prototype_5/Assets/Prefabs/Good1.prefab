@@ -151,3 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 5
   explosionParticle: {fileID: 15085447402717889, guid: 743ce290c74ae49c19aa3f128322fc7e, type: 3}
+  hitSound: {fileID: 8300000, guid: bde9c4c1931e6e242aaf3c11e7eeca78, type: 3}

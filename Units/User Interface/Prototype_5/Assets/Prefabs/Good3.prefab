@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6933106214718096848}
   m_Layer: 0
   m_Name: Good3
-  m_TagString: Untagged
+  m_TagString: barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,5 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57dee0ce1fe46a4d92f5129c6510678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSpeed: 12
+  maxSpeed: 16
+  maxTorque: 0.5
+  xRange: 4
+  ySpawnPos: -2
   pointValue: 15
-  explosionParticle: {fileID: 7535607469619513247, guid: ac10190cf200c4f7e881ca8e41d3d760, type: 3}
+  explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}

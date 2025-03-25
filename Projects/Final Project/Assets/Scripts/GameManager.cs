@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Display the high score
-        highScoreText.text = "High Score: " + highScore;
+        highScoreText.text = "Highest Score: \n" + highScore;
         highScoreText.gameObject.SetActive(true);
     }
 
@@ -399,7 +399,7 @@ public class GameManager : MonoBehaviour
     // -------------------------------------------------------------------
     
     /// <summary>
-    /// Toggles the pause menu on and off, and sets time scale accordingly.
+    /// Toggles the pause menu on and off, and sets time scale accordingly
     /// </summary>
     public void TogglePause()
     {

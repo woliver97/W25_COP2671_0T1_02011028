@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI highScoreText;
+    public GameObject pressEnterText;            // "Press Enter to Start" message
+    public GameObject difficultyButtonsPanel;    // Container for Easy/Medium/Hard buttons
+    private bool hasPressedEnter = false;        // Has the player already pressed Enter?
+
     
     [Header("Menu Buttons")]
     public Button restartButton;
@@ -66,6 +70,10 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        // Show the "Press Enter" prompt and hide the difficulty buttons until Enter is pressed
+        pressEnterText.SetActive(true);
+        difficultyButtonsPanel.SetActive(false);
+
         // Ensure pause & settings menus are hidden initially
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
@@ -75,6 +83,8 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         highScoreText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
+        gunImage.gameObject.SetActive(false);
+
 
         // Set up background music
         if (backgroundMusic != null)
@@ -99,6 +109,15 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+        // Check for initial Enter press to begin showing the difficulty options
+        if (!hasPressedEnter && Input.GetKeyDown(KeyCode.Return))
+        {
+            hasPressedEnter = true;
+            // Hide the "Press Enter" text and show the difficulty buttons
+            pressEnterText.SetActive(false);
+            difficultyButtonsPanel.SetActive(true);
+        }
+
         // Only process input if the game is active
         if (!isGameActive) return;
 
@@ -351,11 +370,12 @@ public class GameManager : MonoBehaviour
         nextPowerUpScore = 100;
         UpdateScore(0);
         
-        // Hide the title screen and show the timer and score text
+        // Hide the title screen and show the timer,score text,and gun image
         titleScreen.gameObject.SetActive(false);
         timerText.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
-        
+        gunImage.gameObject.SetActive(true);
+
         // Set a crosshair cursor
         Cursor.SetCursor(crosshairTexture, new Vector2(crosshairTexture.width / 2, crosshairTexture.height / 2), CursorMode.Auto);
     }

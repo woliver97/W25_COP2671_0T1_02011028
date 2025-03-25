@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public GameObject pauseMenu;
     public GameObject settingsMenu;
+    public GameObject pressEnterText;
+    public GameObject difficultyButtonsPanel;
     public AudioSource backgroundMusic;
     public Slider musicSlider;
     
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        pressEnterText.SetActive(true);
+        difficultyButtonsPanel.SetActive(false);
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
         timerText.gameObject.SetActive(false);
@@ -71,6 +75,13 @@ public class GameManager : MonoBehaviour
     
    void Update()
 {
+    if (!hasPressedEnter && Input.GetKeyDown(KeyCode.Return))
+    {
+        hasPressedEnter = true;
+        pressEnterText.SetActive(false);
+        difficultyButtonsPanel.SetActive(true);
+    }
+
     if (!isGameActive) return; // Only process input when the game is active
 
     if (Input.GetKeyDown(KeyCode.Escape))

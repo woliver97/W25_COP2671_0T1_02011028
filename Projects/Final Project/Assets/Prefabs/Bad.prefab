@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointValue: -10
-  explosionParticle: {fileID: 4425129568604114668, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+  explosionParticle: {fileID: 5985634496115995770, guid: 463cf9f7af4680240898f6aeba3fe3e6, type: 3}
   hitSound: {fileID: 8300000, guid: 56b613c5061e2664590eb39c9db999aa, type: 3}

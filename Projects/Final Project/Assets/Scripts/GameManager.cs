@@ -50,9 +50,11 @@ public class GameManager : MonoBehaviour
     public GameObject settingsMenu;
     
     [Header("Audio")]
+    public AudioSource sfxSource;              // Sound effects
     public AudioSource backgroundMusic;        // Background music source
     public Slider musicSlider;                 // Slider to adjust music volume
-    public AudioClip buttonSound;              // Sound to play when buttons are clicked
+    public AudioClip buttonSound;              // Sound to play when buttons are clicked    
+
     
     [Header("Power-Up")]
     public GameObject powerUpPrefab;           // The power-up object to spawn
@@ -450,9 +452,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void PlayButtonSound()
     {
-        if (buttonSound != null && backgroundMusic != null)
+        if (buttonSound != null && sfxSource != null)
         {
-            backgroundMusic.PlayOneShot(buttonSound);
+            sfxSource.PlayOneShot(buttonSound);
         }
     }
     

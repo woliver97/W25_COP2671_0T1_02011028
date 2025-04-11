@@ -55,8 +55,8 @@ public class Target : MonoBehaviour
     /// </summary>
     private void OnTriggerEnter(Collider other)
     {
-        // Ignore collisions with power-ups
-        if (other.gameObject.CompareTag("PowerUp")) return;
+        // Ignore collisions with power-ups or borders
+        if (other.gameObject.CompareTag("PowerUp") || other.gameObject.CompareTag("Border")) return;
 
         Destroy(gameObject);
 
@@ -66,6 +66,7 @@ public class Target : MonoBehaviour
             gameManager.GameOver();
         }
     }
+
 
     /// <summary>
     /// Returns a random upward force vector within the specified speed range.

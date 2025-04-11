@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     
     [Header("Scoring")]
     private int score;                         // Current game score
-    private int highScore = 0;                 // Saved high score
     private int nextPowerUpScore = 100;         // Score threshold for the next power-up
     
     [Header("Game Timer")]
@@ -33,10 +32,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI timerText;
-    public TextMeshProUGUI highScoreText;
-    public GameObject pressEnterText;            // "Press Enter to Start" message
-    public GameObject difficultyButtonsPanel;    // Container for Easy/Medium/Hard buttons
-    private bool hasPressedEnter = false;        // Has the player already pressed Enter?
+    public GameObject pressEnterText;                   // "Press Enter to Start" message
+    public GameObject difficultyButtonsPanel;           // Container for Easy/Medium/Hard buttons
+    private bool hasPressedEnter = false;               // Has the player already pressed Enter?
+    public TextMeshProUGUI scoreboardTitleText;         // "Top Scores" label
+    public TextMeshProUGUI scoreboardListText;          // List of top scores
+
+    private List<int> scoreHistory = new List<int>();   // Runtime list of scores
+    private const int maxScores = 5;                    // Top 5 scores tracked
+
 
     
     [Header("Menu Buttons")]
@@ -83,7 +87,6 @@ public class GameManager : MonoBehaviour
         // Hide UI elements until the game is started
         timerText.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(false);
-        highScoreText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         gunImage.gameObject.SetActive(false);
 
@@ -105,8 +108,17 @@ public class GameManager : MonoBehaviour
             musicSlider.onValueChanged.AddListener(AdjustMusicVolume);
         }
 
-        // Load the high score from PlayerPrefs
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        // Load previous scores
+        scoreHistory.Clear();
+        for (int i = 0; i < maxScores; i++)
+        {
+            if (PlayerPrefs.HasKey("Score_" + i))
+            {
+                scoreHistory.Add(PlayerPrefs.GetInt("Score_" + i));
+            }
+        }
+
+        
     }
     
     void Update()
@@ -162,17 +174,48 @@ public class GameManager : MonoBehaviour
         // Reset time scale in case a power-up was slowing time
         Time.timeScale = 1f;
 
-        // Update and save the high score if needed
-        if (score > highScore)
+        // Add current score to score history and sort
+        scoreHistory.Add(score);
+        scoreHistory.Sort((a, b) => b.CompareTo(a)); // Sort descending
+
+        // Keep only the top N scores
+        if (scoreHistory.Count > maxScores)
         {
-            highScore = score;
-            PlayerPrefs.SetInt("HighScore", highScore);
-            PlayerPrefs.Save();
+            scoreHistory = scoreHistory.GetRange(0, maxScores);
         }
 
-        // Display the high score
-        highScoreText.text = "Highest Score: \n" + highScore;
-        highScoreText.gameObject.SetActive(true);
+        // Save to PlayerPrefs
+        for (int i = 0; i < scoreHistory.Count; i++)
+        {
+            PlayerPrefs.SetInt("Score_" + i, scoreHistory[i]);
+        }
+        PlayerPrefs.Save();
+
+        // Show scoreboard
+        DisplayScoreboard();
+
+
+    }
+    /// <summary>
+    /// Displays the top scores on the screen after the game ends. 
+    /// Activates the scoreboard title and list UI, and populates the list with 
+    /// up to the top 5 highest scores stored in memory (and persisted via PlayerPrefs).
+    /// </summary>
+    private void DisplayScoreboard()
+    {
+        // Activate scoreboard UI elements
+        scoreboardTitleText.gameObject.SetActive(true);
+        scoreboardListText.gameObject.SetActive(true);
+
+        // Format the score list as numbered entries
+        string scoreList = "";
+        for (int i = 0; i < scoreHistory.Count; i++)
+        {
+            scoreList += (i + 1) + ". " + scoreHistory[i] + "\n";
+        }
+
+        // Update the UI text
+        scoreboardListText.text = scoreList;
     }
 
     /// <summary>

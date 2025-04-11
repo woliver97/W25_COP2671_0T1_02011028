@@ -2681,7 +2681,6 @@ MonoBehaviour:
   - {fileID: 1156680540414199998, guid: c9250b6a9581ab146850127ee38c6631, type: 3}
   - {fileID: 7680529403145111814, guid: 853665bfc6ac8324784ed3fc27bb7f73, type: 3}
   scoreText: {fileID: 1901804878}
-  gameOverText: {fileID: 0}
   timerText: {fileID: 1572708988}
   pressEnterText: {fileID: 87652681}
   difficultyButtonsPanel: {fileID: 1662367557}
@@ -5059,7 +5058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1973547047
 RectTransform:
   m_ObjectHideFlags: 0

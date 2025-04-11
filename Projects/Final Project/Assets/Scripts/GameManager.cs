@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     
     [Header("UI Elements")]
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI timerText;
     public GameObject pressEnterText;                   // "Press Enter to Start" message
     public GameObject difficultyButtonsPanel;           // Container for Easy/Medium/Hard buttons
@@ -86,7 +85,6 @@ public class GameManager : MonoBehaviour
         
         // Hide UI elements until the game is started
         timerText.gameObject.SetActive(false);
-        gameOverText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         gunImage.gameObject.SetActive(false);
 
@@ -165,7 +163,6 @@ public class GameManager : MonoBehaviour
     {
         // Show the restart button and "Game Over" text
         restartButton.gameObject.SetActive(true);
-        gameOverText.gameObject.SetActive(true);
         
         // Deactivate the game and hide the pause menu
         isGameActive = false;

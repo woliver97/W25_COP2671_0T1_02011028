@@ -77,7 +77,7 @@ public class Target : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns a random torque value within the specified range.
+    ///  Returns a random torque value within the specified range.
     /// </summary>
     private float RandomTorque()
     {

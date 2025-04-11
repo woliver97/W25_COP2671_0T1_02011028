@@ -56,7 +56,7 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Ignore collisions with power-ups or borders
-        if (other.gameObject.CompareTag("PowerUp") || other.gameObject.CompareTag("Border")) return;
+        if (other.gameObject.CompareTag("PowerUp") || other.gameObject.CompareTag("border")) return;
 
         Destroy(gameObject);
 

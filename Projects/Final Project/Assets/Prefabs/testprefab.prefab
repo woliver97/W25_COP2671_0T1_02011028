@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8158528450225393956}
   - component: {fileID: 8354590345590077979}
   - component: {fileID: 1625904735414660921}
-  - component: {fileID: 7579609788286377198}
+  - component: {fileID: 5282482428372987255}
   m_Layer: 0
-  m_Name: Good2
+  m_Name: testprefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9964992, y: 0.99649537, z: 0.9964957}
   m_Center: {x: 0.0000001937151, y: 0, z: -0.000000014901161}
---- !u!114 &7579609788286377198
+--- !u!114 &5282482428372987255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,9 +146,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7009729899289809214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d57dee0ce1fe46a4d92f5129c6510678, type: 3}
+  m_Script: {fileID: 11500000, guid: 96895d57a9b211f468a9a7ccf7e8d3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointValue: 10
-  explosionParticle: {fileID: 6601538019107920666, guid: 70a1428e5f80a4866a779ef1ab9fe521, type: 3}
-  hitSound: {fileID: 8300000, guid: bde9c4c1931e6e242aaf3c11e7eeca78, type: 3}

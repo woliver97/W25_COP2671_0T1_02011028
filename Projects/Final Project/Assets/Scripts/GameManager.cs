@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour
         // Move the gun image horizontally based on the mouse's X position
         Vector3 mousePosition = Input.mousePosition;
         gunImage.position = new Vector3(mousePosition.x, gunImage.position.y, gunImage.position.z);
+        
     }
     
     // -------------------------------------------------------------------

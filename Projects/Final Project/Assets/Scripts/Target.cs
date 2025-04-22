@@ -22,15 +22,16 @@ public class Target : MonoBehaviour
     void Start()
     {
         // Set up components and initial forces
+        transform.position = RandomSpawnPos();
         targetRb = GetComponent<Rigidbody>();
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
-        transform.position = RandomSpawnPos();
         
         // Cache the reference to GameManager
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
+    
     /// <summary>
     /// Called when the target is clicked. Awards points, plays sound and particle effect, then destroys the target.
     /// </summary>

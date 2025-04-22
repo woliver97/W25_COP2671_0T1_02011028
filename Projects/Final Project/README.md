@@ -30,7 +30,7 @@ Requirements Covered:
 ✔ Menu system  
 ✔ Coroutine usage  
 ✔ Particle system  
-✔ Two distinct sound effects  
+✔ Two or more distinct sound effects  
 ✔ Continuous background music  
 ✔ Game timer with pause support  
 ✔ Scoreboard and scoring system  
